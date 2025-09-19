@@ -1,3 +1,15 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { Picalc } from './pages/maths/picalc/picalc';
+import { Homepage } from './pages/homepage/homepage';
+
+export const routes: Routes = [
+    {
+        path: '',
+        component: Homepage,
+    },
+    {
+        path: 'maths/picalc',
+        component: Picalc,
+    },
+];

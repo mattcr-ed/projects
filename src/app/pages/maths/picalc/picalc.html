@@ -1,0 +1,5 @@
+<div class="pi-calc">
+    <p>Pi to {{ user_digits - 1 }} place/s: {{ digits }}</p>
+    <input type="text" id="digits-box" placeholder="10" (keydown.enter)="updateDigits()">
+    <input type="submit" (click)="updateDigits()">
+</div>
