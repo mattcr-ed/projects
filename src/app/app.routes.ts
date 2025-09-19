@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { Homepage } from './homepage/homepage';
-import { Picalc } from './picalc/picalc';
+import { Picalc } from './pages/maths/picalc/picalc';
+import { Homepage } from './pages/homepage/homepage';
 
 export const routes: Routes = [
     {
@@ -9,7 +9,7 @@ export const routes: Routes = [
         component: Homepage,
     },
     {
-        path: 'picalc',
+        path: 'maths/picalc',
         component: Picalc,
     },
 ];
