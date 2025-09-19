@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WeatherService } from './weather.service';
+import { WeatherInterface } from './weather.interface';
 
 @Component({
   selector: 'app-weather-checker',
@@ -8,21 +9,17 @@ import { WeatherService } from './weather.service';
   styleUrl: './weather-checker.css'
 })
 export class WeatherChecker {
-  temp = 0;
-  constructor(private weatherservice: WeatherService) { }
+  weather!: WeatherInterface;
 
-  callAPI() {
+  constructor(private weatherService: WeatherService) {
     this.getWeather();
-    console.log(this.temp);
   }
 
   getWeather() {
-    let res;
-    this.weatherservice.getWeather().subscribe({
-      next: (data) => {
-        console.log(data);
-        this.temp = data.current.temperature_2m;
-      },
-    });
+    this.weatherService.getWeather().subscribe(
+      res => {
+        this.weather = res;
+      }
+    );
   }
 }
