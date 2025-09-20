@@ -12,21 +12,28 @@ export class Picalc {
   protected user_digits = 0;
   protected digits = "";
   protected iter = calculatePi();
+  protected isError = false;
 
   ngOnInit() {
     this.textbox = document.getElementById('digits-box');
   }
 
   updateDigits() {
-    this.user_digits = Number.parseInt(this.textbox.value) + 1;
+    this.user_digits = Number.parseInt(this.textbox.value);
     this.iter = calculatePi();
-    this.digits = "";
-    for (let i = 0; i < this.user_digits; i++) {
-      this.digits += this.iter.next().value;
-      if (i % 10 == 0 && i != 0)
-        this.digits += " ";
+    if (this.user_digits <= 0) {
+      this.isError = true;
+      return;
+    } else {
+      this.isError = false;
+      this.digits = "";
+      for (let i = 0; i < this.user_digits + 1; i++) {
+        this.digits += this.iter.next().value;
+        if (i % 10 == 0 && i != 0)
+          this.digits += " ";
+      }
+      this.digits = "3." + this.digits.slice(1);
     }
-    this.digits = "3." + this.digits.slice(1);
   }
 }
 

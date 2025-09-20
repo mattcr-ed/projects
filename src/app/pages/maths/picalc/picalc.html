@@ -1,5 +1,16 @@
 <div class="pi-calc">
-    <p>Pi to {{ user_digits - 1 }} place/s: {{ digits }}</p>
-    <input type="text" id="digits-box" placeholder="10" (keydown.enter)="updateDigits()">
+    <input type="number" id="digits-box" placeholder="10" (keydown.enter)="updateDigits()">
     <input type="submit" (click)="updateDigits()">
+    <br />
+    @if (isError) {
+        Number must be greater than 0!
+        <br />
+    }
+    @if (user_digits === 1) {
+        Pi to {{ user_digits  }} decimal place: {{ digits }}
+    } @else if (user_digits > 1) {
+        Pi to {{ user_digits  }} decimal places: {{ digits }}
+    } @else {
+        Enter a number
+    }
 </div>
