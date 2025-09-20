@@ -1,6 +1,30 @@
-<div class="weather">
+<div class="input-div">
+    <div class="input-latitude">
+        <label for="user-latitude">Latitude:</label>
+        <input type="number" placeholder="51.5" id="user-latitude">
+    </div>
+    <div class="user-longitude">
+        <label for="user-longitude">Longitude:</label>
+        <input type="number" placeholder="0" id="user-longitude">
+    </div>
+    <input type="submit">
+</div>
+<div class="weather-box">
     @if (weather) {
-        Temperature: {{ weather.current.temperature_2m }}
+        <div class="location info-box">
+            Latitude: {{ weather.latitude }}<br />
+            Longitude: {{ weather.longitude }}<br />
+            Elevation: {{ weather.elevation + "m"}}
+        </div>
+        <div class="temperature info-box">
+            Temperature: {{ weather.current.temperature_2m + weather.current_units.temperature_2m }}<br />
+            Feels Like: {{ weather.current.apparent_temperature + weather.current_units.apparent_temperature }}
+        </div>
+        <div class="rain-wind info-box">
+            Rain: {{ weather.current.rain + weather.current_units.rain }}<br />
+            Wind Speed: {{ weather.current.wind_speed_10m + weather.current_units.wind_speed_10m }}<br />
+            Wind Direction: {{ weather.current.wind_direction_10m + weather.current_units.wind_direction_10m }}
+        </div>
     } @else {
         Not loaded
     }
