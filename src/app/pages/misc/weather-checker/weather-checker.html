@@ -1,14 +1,21 @@
+@if (isError) {
+    <div class="error-div">
+        Latitude must be -90 <= x <= +90
+        Longitude must be -180 <= x <= +180
+    </div>
+}
 <div class="input-div">
     <div class="input-latitude">
-        <label for="user-latitude">Latitude:</label>
+        <label for="user-latitude">Latitude: </label>
         <input type="number" placeholder="51.5" id="user-latitude">
     </div>
     <div class="user-longitude">
-        <label for="user-longitude">Longitude:</label>
+        <label for="user-longitude">Longitude: </label>
         <input type="number" placeholder="0" id="user-longitude">
     </div>
-    <input type="submit">
+    <input type="submit" (click)="userSubmit()">
 </div>
+<br />
 <div class="weather-box">
     @if (weather) {
         <div class="location info-box">
